@@ -1,2 +1,3 @@
 # uzudj-arduino
- programa para la creación de gamepad para simuladores de dj
+Con este programa podremos fabricar pads caseros para videojuegos simuladores de DJ.
+www.uzu.cl
