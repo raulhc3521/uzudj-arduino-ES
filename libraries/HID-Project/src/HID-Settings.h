@@ -75,11 +75,16 @@ THE SOFTWARE.
 
 #if defined(ARDUINO_ARCH_AVR)
 
+// Use default alignment for AVR
+#define ATTRIBUTE_PACKED
+
 #include "PluggableUSB.h"
 
 #define EPTYPE_DESCRIPTOR_SIZE      uint8_t
 
 #elif defined(ARDUINO_ARCH_SAM)
+
+#define ATTRIBUTE_PACKED  __attribute__((packed, aligned(1)))
 
 #include "USB/PluggableUSB.h"
 
@@ -104,12 +109,19 @@ THE SOFTWARE.
 
 #elif defined(ARDUINO_ARCH_SAMD)
 
+#define ATTRIBUTE_PACKED  __attribute__((packed, aligned(1)))
+
+#define USB_EP_SIZE                 EPX_SIZE
+#define EP_TYPE_INTERRUPT_IN        USB_ENDPOINT_TYPE_INTERRUPT | USB_ENDPOINT_IN(0);
+#define EP_TYPE_INTERRUPT_OUT       USB_ENDPOINT_TYPE_INTERRUPT | USB_ENDPOINT_OUT(0);
+
+#if defined(ARDUINO_API_VERSION)
+#include "api/PluggableUSB.h"
+#define EPTYPE_DESCRIPTOR_SIZE		unsigned int
+#else
 #include "USB/PluggableUSB.h"
 
 #define EPTYPE_DESCRIPTOR_SIZE      uint32_t
-#define EP_TYPE_INTERRUPT_IN        USB_ENDPOINT_TYPE_INTERRUPT | USB_ENDPOINT_IN(0);
-#define EP_TYPE_INTERRUPT_OUT       USB_ENDPOINT_TYPE_INTERRUPT | USB_ENDPOINT_OUT(0);
-#define USB_EP_SIZE                 EPX_SIZE
 //#define USB_SendControl           USBDevice.sendControl -> real C++ functions to take care of PGM overloading
 #define USB_Available               USBDevice.available
 #define USB_Recv                    USBDevice.recv
@@ -119,6 +131,7 @@ THE SOFTWARE.
 
 int USB_SendControl(void* y, uint8_t z);
 int USB_SendControl(uint8_t x, const void* y, uint8_t z);
+#endif
 
 #define TRANSFER_PGM                0
 #define TRANSFER_RELEASE            0

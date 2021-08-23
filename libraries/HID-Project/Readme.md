@@ -1,4 +1,4 @@
-Arduino HID Project 2.6.1
+Arduino HID Project 2.8.0
 =========================
 
 ![Header Picture](header.jpg)
@@ -7,7 +7,7 @@ This project went through a lot of phases and has now reached a new Arduino ~~US
 with a lot of new functions like extended HID. It also supports HoodLoader2 (version 1 is no longer supported).
 The idea is to enable enhanced USB functions to almost all 'standard' Arduino boards.
 
-<a href="https://www.buymeacoffee.com/Mnwg9NrCK" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+<a href="https://www.buymeacoffee.com/nicohood" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
 **Supported Arduinos (IDE 1.6.7 or higher!):**
 * Uno (with [HoodLoader2](https://github.com/NicoHood/HoodLoader2))
@@ -31,6 +31,7 @@ The idea is to enable enhanced USB functions to almost all 'standard' Arduino bo
 * System Key (for PC standby/shutdown)
 * Gamepad (32 buttons, 4 16bit axis, 2 8bit axis, 2 D-Pads)
 * RawHID
+* SurfaceDial
 * Each device is available as single or multi report device (except RawHID)
 
 See the [wiki](https://github.com/NicoHood/HID/wiki/Features) for more information about features etc.
@@ -52,6 +53,18 @@ www.nicohood.de
 Version History
 ===============
 ```
+2.8.0 Release (08.04.2021)
+* Added lots of keyboard layout languages (Thanks @SukkoPera)
+
+2.7.0 Release (06.03.2021)
+* Fix SAMD compilation #244
+* Added support for Italien Keymap #231
+* Changed: Use a fixed definion of keycodes and add language specific variants
+
+2.6.2 Release (24.12.2020)
+* Fix SAMD alignment #211
+* Fix asciimap size check #228
+
 2.6.1 Release (13.07.2019)
 * Allow keyboard layout change within arduino sketch #176
 
