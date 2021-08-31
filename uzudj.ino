@@ -178,7 +178,7 @@ byte KeyFNPin = 15;           //Configurado el boton Function en el pin 15
 
 ////////// Debounce de botones //////////
 unsigned int Debounce = 20;               //Debounce de 30ms
-unsigned int TurntableDelay = 30;         //Delay del disco de 40ms para cuando dejamos de moverlo
+unsigned int TurntableDelay = 40;         //Delay del disco de 40ms para cuando dejamos de moverlo
 float enc_sensi = 1;                      //Sensibilidad del encoder de los discos, donde 1 es alta sensibilidad y 255 es muy baja sensibilidad
 
 unsigned int con_t_up = 0;                //Contadores para prevenir lecturas incorrectas del disco
@@ -701,12 +701,6 @@ void loop() {
 
   /// Tornamesa UP ///  
   if ((HoldTurntableUp == true) && (TurntableUpState == false) && (TurntableUpTime + Debounce <= millis())) {
-    if((KeyFNState == true) && (djmaxmode == true)){
-      NKROKeyboard.release(MapEncLeft);
-      NKROKeyboard.press(MapEncLeft);
-      TurntableUpState = true;
-      TurntableUpTime = millis();
-    }    
     if((KeyFNState == true) && (ez2djmode == true)){
       NKROKeyboard.release(MapEncLdown);
       NKROKeyboard.press(MapEncLup);
@@ -714,6 +708,10 @@ void loop() {
       NKROKeyboard.release(MapEncLup);
       delay(30);
     }  
+    if((KeyFNState == true) && (djmaxmode == true)){
+      NKROKeyboard.release(MapEncLeft);
+      NKROKeyboard.press(MapEncLeft);
+    }    
     else{
       if(djmaxmode == true){
         NKROKeyboard.release(KEY_DOWN_ARROW);
@@ -729,9 +727,9 @@ void loop() {
         NKROKeyboard.release(MapEncLdown);
         NKROKeyboard.press(MapEncLup);
       }
-      TurntableUpState = true;
-      TurntableUpTime = millis();
     }
+    TurntableUpState = true;
+    TurntableUpTime = millis();
   }  
   if ((HoldTurntableUp == false) && (TurntableUpState == true) && (TurntableUpTime + TurntableDelay <= millis())) {
     if((KeyFNState == false) && (djmaxmode == true)){
@@ -756,12 +754,6 @@ void loop() {
 
   /// Tornamesa DOWN ///
   if ((HoldTurntableDown == true) && (TurntableDownState == false) && (TurntableDownTime + Debounce <= millis())) {
-    if((KeyFNState == true) && (djmaxmode == true)){
-      NKROKeyboard.release(MapEncLeft);
-      NKROKeyboard.press(MapEncLeft);
-      TurntableDownState = true;
-      TurntableDownTime = millis();
-    }
     if((KeyFNState == true) && (ez2djmode == true)){
       NKROKeyboard.release(MapEncLup);
       NKROKeyboard.press(MapEncLdown);
@@ -769,6 +761,10 @@ void loop() {
       NKROKeyboard.release(MapEncLdown);
       delay(30);
     } 
+    if((KeyFNState == true) && (djmaxmode == true)){
+      NKROKeyboard.release(MapEncLeft);
+      NKROKeyboard.press(MapEncLeft);
+    }
     else{
       if(djmaxmode == true){
         NKROKeyboard.release(KEY_UP_ARROW);
@@ -784,10 +780,9 @@ void loop() {
         NKROKeyboard.release(MapEncLup);
         NKROKeyboard.press(MapEncLdown);
       }
-      TurntableDownState = true;
-      TurntableDownTime = millis();
     }
-    
+    TurntableDownState = true;
+    TurntableDownTime = millis();
   }
   
   if ((HoldTurntableDown == false) && (TurntableDownState == true) && (TurntableDownTime + TurntableDelay <= millis())) {
