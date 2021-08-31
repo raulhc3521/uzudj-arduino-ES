@@ -977,7 +977,7 @@ void loop() {
         } 
       }
         
-      _V1 = _V1 - Vel;                    //Cambiar el Valor CHSV de los colores segun velosidad
+      _V1 = _V1 - Vel;                    //Cambiar el Valor CHSV de los colores segun velocidad
       V1_ = V1_ + Vel;    
       _V2 = _V2 - Vel;
       V2_ = V2_ + Vel;
@@ -1030,7 +1030,7 @@ void loop() {
           V2_ = MaxV;
         }
         
-        _V1 = _V1 + Vel;                    //Cambiar el Valor CHSV de los colores segun velosidad
+        _V1 = _V1 + Vel;                    //Cambiar el Valor CHSV de los colores segun velocidad
         V1_ = V1_ - Vel;    
         _V2 = _V2 + Vel;
         V2_ = V2_ - Vel;
@@ -1084,7 +1084,7 @@ void loop() {
         } 
       }
 
-      _V3 = _V3 - Vel;                    //Cambiar el Valor CHSV de los colores segun velosidad
+      _V3 = _V3 - Vel;                    //Cambiar el Valor CHSV de los colores segun velocidad
       V3_ = V3_ + Vel;  
       _V4 = _V4 - Vel;
       V4_ = V4_ + Vel;     
@@ -1137,7 +1137,7 @@ void loop() {
         V4_ = MaxV;        
       }
 
-      _V3 = _V3 + Vel;                    //Cambiar el Valor CHSV de los colores segun velosidad
+      _V3 = _V3 + Vel;                    //Cambiar el Valor CHSV de los colores segun velocidad
       V3_ = V3_ - Vel;  
       _V4 = _V4 + Vel;
       V4_ = V4_ - Vel;      
