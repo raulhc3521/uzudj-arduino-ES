@@ -142,6 +142,8 @@ byte MapEncLup = 113;          // 113 = q
 byte MapEncLdown = 101;        // 101 = e
 byte MapEncRup = 117;          // 117 = u
 byte MapEncRdown = 112;        // 112 = p
+boolean efbt_t = false;
+boolean efbt_y = false;
 
 //Mapeo de los botones FN 
 byte MapKeyFN_ST = 132;        // 132 = Escape
@@ -355,6 +357,7 @@ void loop() {
     if(KeyFNState == true){
       if(ez2djmode == true){
         NKROKeyboard.press(116); // letra T
+        efbt_t = true;
       }
       else{                      // djmax
         NKROKeyboard.press(KEY_LEFT_SHIFT);
@@ -371,7 +374,10 @@ void loop() {
   if ((HoldKey1 == HIGH) && (Key1State == true) && (Key1Time + Debounce <= millis())) {
     NKROKeyboard.release(MapKey1);
     NKROKeyboard.release(KEY_LEFT_SHIFT);
-    NKROKeyboard.release(116);
+    if((ez2djmode == true) && (efbt_t == true)){
+      NKROKeyboard.release(116);
+      efbt_t = false;
+    }
     Key1State = false;
     Key1Time = millis();
   }  
@@ -413,6 +419,7 @@ void loop() {
     if(KeyFNState == true){
       if(ez2djmode == true){
         NKROKeyboard.press(121); // letra Y
+        efbt_y = true;
       }
       else{
         NKROKeyboard.press(KEY_F8);
@@ -429,7 +436,10 @@ void loop() {
   if ((HoldKey3 == HIGH) && (Key3State == true) && (Key3Time + Debounce <= millis())) {
     NKROKeyboard.release(MapKey3);
     NKROKeyboard.release(KEY_F8);
-    NKROKeyboard.release(121);
+    if((ez2djmode == true) && (efbt_y == true)){
+      NKROKeyboard.release(121);
+      efbt_y = false;
+    }
     Key3State = false;
     Key3Time = millis();
   }  
@@ -458,7 +468,9 @@ void loop() {
   if ((HoldKey4 == HIGH) && (Key4State == true) && (Key4Time + Debounce <= millis())) {
     NKROKeyboard.release(MapKey4);
     NKROKeyboard.release(KEY_TAB);
-    NKROKeyboard.release(KEY_F3);
+    if(ez2djmode == true){
+      NKROKeyboard.release(KEY_F3);
+    }
     Key4State = false;
     Key4Time = millis();
   }  
@@ -487,7 +499,9 @@ void loop() {
   if ((HoldKey5 == HIGH) && (Key5State == true) && (Key5Time + Debounce <= millis())) {
     NKROKeyboard.release(MapKey5);
     NKROKeyboard.release(KEY_F9);
-    NKROKeyboard.release(117);
+    if(ez2djmode == true){
+      NKROKeyboard.release(117);
+    }
     Key5State = false;
     Key5Time = millis();
   }  
@@ -545,7 +559,9 @@ void loop() {
   if ((HoldKey7 == HIGH) && (Key7State == true) && (Key7Time + Debounce <= millis())) {
     NKROKeyboard.release(MapKey7);
     NKROKeyboard.release(KEY_RIGHT_SHIFT);
-    NKROKeyboard.release(105);
+    if(ez2djmode == true){
+      NKROKeyboard.release(105);
+    }    
     Key7State = false;
     Key7Time = millis();
   }  
